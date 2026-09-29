@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today Courier Ltd | Same Day Courier & Express Logistics UK</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            navy: '#0f172a',
+                            dark: '#020617'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Top Contact Bar -->
+    <div class="bg-brand-navy text-slate-300 text-xs sm:text-sm py-2.5 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-6">
+                <a href="tel:07462711312" class="flex items-center space-x-2 hover:text-brand-500 transition-colors group">
+                    <span class="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-phone text-xs"></i>
+                    </span>
+                    <span class="font-semibold text-white">(07462) 711312</span>
+                </a>
+                <a href="mailto:office.todaycourier@gmail.com" class="flex items-center space-x-2 hover:text-brand-500 transition-colors group">
+                    <span class="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-envelope text-xs"></i>
+                    </span>
+                    <span class="hidden sm:inline">office.todaycourier@gmail.com</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-4 text-xs">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-1.5 animate-pulse"></span>
+                    24/7 Dispatch Active
+                </span>
+                <span class="text-slate-400 hidden md:inline">Nationwide Express Delivery</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-truck-fast text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-tight text-slate-900 block leading-none">TODAY<span class="text-brand-600">COURIER</span></span>
+                        <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase block mt-1">Express Logistics Ltd</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-700">
+                    <a href="#services" class="hover:text-brand-600 transition-colors">Services</a>
+                    <a href="#quote" class="hover:text-brand-600 transition-colors">Instant Quote</a>
+                    <a href="#coverage" class="hover:text-brand-600 transition-colors">Coverage</a>
+                    <a href="#contact" class="hover:text-brand-600 transition-colors">Contact Us</a>
+                </nav>
+
+                <!-- Header CTA Buttons -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <a href="tel:07462711312" class="flex items-center space-x-2 text-slate-900 font-bold hover:text-brand-600 transition-colors px-3 py-2">
+                        <i class="fa-solid fa-phone text-brand-600"></i>
+                        <span>(07462) 711312</span>
+                    </a>
+                    <button onclick="openQuoteModal()" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+                        Book Same Day
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-600">Services</a>
+            <a href="#quote" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-600">Instant Quote</a>
+            <a href="#coverage" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-600">Coverage</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-600">Contact Us</a>
+            <div class="pt-4 border-t border-slate-100 space-y-3">
+                <a href="tel:07462711312" class="flex items-center justify-center space-x-2 w-full py-3 bg-slate-100 rounded-xl font-bold text-slate-900">
+                    <i class="fa-solid fa-phone text-brand-600"></i>
+                    <span>Call (07462) 711312</span>
+                </a>
+                <a href="mailto:office.todaycourier@gmail.com" class="flex items-center justify-center space-x-2 w-full py-3 bg-slate-100 rounded-xl font-bold text-slate-900 text-sm">
+                    <i class="fa-solid fa-envelope text-brand-600"></i>
+                    <span>office.todaycourier@gmail.com</span>
+                </a>
+                <button onclick="openQuoteModal(); toggleMobileMenu();" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl shadow-md">
+                    Book Same Day Courier
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-b from-slate-900 via-brand-navy to-slate-900 text-white py-16 lg:py-24 overflow-hidden">
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Text -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 bg-brand-500/10 border border-brand-500/30 px-3 py-1.5 rounded-full text-brand-500 text-xs sm:text-sm font-semibold">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>UK Collection Within 60 Minutes Guaranteed</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                            Urgent Same Day <br class="hidden sm:inline"/><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-amber-400">Courier Services</span> Across the UK
+                        </h1>
+                        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal">
+                            Dedicated direct-drive couriers for time-critical freight, urgent documents, pallets, and parcels. Available 24/7 365 days a year.
+                        </p>
+                        
+                        <!-- Immediate Direct Contact Box -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="tel:07462711312" class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-600/30 transition-all transform hover:-translate-y-0.5">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                                <span class="text-lg">Call (07462) 711312</span>
+                            </a>
+                            <a href="mailto:office.todaycourier@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-4 rounded-xl border border-slate-700 transition-colors">
+                                <i class="fa-solid fa-envelope text-brand-500"></i>
+                                <span>Email Us Directly</span>
+                            </a>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-center lg:text-left text-slate-400 text-xs sm:text-sm">
+                            <div class="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-2">
+                                <i class="fa-solid fa-shield-halved text-brand-500 text-lg mb-1 sm:mb-0"></i>
+                                <span>Fully Insured £50k Goods in Transit</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-2">
+                                <i class="fa-solid fa-map-location-dot text-brand-500 text-lg mb-1 sm:mb-0"></i>
+                                <span>Live GPS Tracking</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-2">
+                                <i class="fa-solid fa-clock text-brand-500 text-lg mb-1 sm:mb-0"></i>
+                                <span>60 Min Pick-up</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Quick Quote Estimator Card -->
+                    <div class="lg:col-span-5" id="quote">
+                        <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100">
+                            <div class="flex items-center justify-between mb-6">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-900">Instant Estimate</h3>
+                                    <p class="text-xs text-slate-500">Calculate estimated same-day route rate</p>
+                                </div>
+                                <span class="bg-brand-100 text-brand-700 text-xs font-bold px-3 py-1 rounded-full">Fast Quote</span>
+                            </div>
+
+                            <form id="hero-quote-form" onsubmit="handleHeroQuote(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Collection Postcode</label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-location-dot absolute left-3.5 top-3.5 text-slate-400"></i>
+                                        <input type="text" required id="calc-pickup" placeholder="e.g. B1 1AA or M1 2WD" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Delivery Postcode</label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-flag-checkered absolute left-3.5 top-3.5 text-slate-400"></i>
+                                        <input type="text" required id="calc-delivery" placeholder="e.g. EC1A 1BB" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Vehicle Required</label>
+                                    <select id="calc-vehicle" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm bg-white">
+                                        <option value="small-van">Small Van (Up to 400kg / 1 Pallet)</option>
+                                        <option value="swb">Short Wheelbase (Up to 800kg / 2 Pallets)</option>
+                                        <option value="lwb">Long Wheelbase (Up to 1300kg / 3 Pallets)</option>
+                                        <option value="luton">Luton Van with Tail Lift (Up to 1000kg / 6 Pallets)</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="w-full bg-slate-900 hover:bg-brand-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition-colors flex items-center justify-center space-x-2">
+                                    <span>Calculate Estimate</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                            </form>
+
+                            <!-- Estimate Display Area -->
+                            <div id="quote-result" class="hidden mt-6 p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center space-y-3">
+                                <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Estimated Delivery Fare</p>
+                                <div class="text-3xl font-black text-brand-600" id="quote-price">£0.00</div>
+                                <p class="text-xs text-slate-600">Includes direct dedicated vehicle & live tracking</p>
+                                <a href="tel:07462711312" class="block w-full py-2.5 bg-brand-600 text-white font-bold rounded-xl text-sm hover:bg-brand-700 transition-colors">
+                                    Call (07462) 711312 to Confirm Booking
+                                </a>
+                            </div>
+
+                            <div class="mt-4 text-center">
+                                <p class="text-xs text-slate-500">Need urgent help? Dispatch Line: <a href="tel:07462711312" class="text-brand-600 font-bold hover:underline">(07462) 711312</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">Our Logistics Capabilities</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">Tailored Express Courier Solutions</p>
+                    <p class="text-slate-600 mt-4 text-base">Whether it's a single document or multiple full pallet loads, Today Courier Ltd provides dedicated vehicles with point-to-point delivery.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-xl transition-shadow flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Same Day Express</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">Immediate dispatch of dedicated courier vehicles. Direct from collection point straight to your customer with zero co-loading delays.</p>
+                        </div>
+                        <a href="tel:07462711312" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700">
+                            <span>Book via Phone (07462) 711312</span>
+                            <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-xl transition-shadow flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-pallet"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Pallet & Heavy Freight</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">Full and part-load palletized freight transport across the UK. Tail-lift equipped vans available for locations without forklifts.</p>
+                        </div>
+                        <a href="mailto:office.todaycourier@gmail.com" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700">
+                            <span>Email Freight Specs</span>
+                            <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-xl transition-shadow flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-file-contract"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Legal & Legal Documents</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">Ultra-secure delivery of legal papers, passports, contracts, and confidential materials with signature-tracked proof of delivery.</p>
+                        </div>
+                        <a href="tel:07462711312" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700">
+                            <span>Arrange Confidential Courier</span>
+                            <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Callout Banner -->
+        <section class="bg-slate-900 text-white py-12 border-y border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 bg-gradient-to-r from-brand-navy to-slate-800 p-8 sm:p-10 rounded-3xl border border-slate-700/60 shadow-xl">
+                    <div class="space-y-2 text-center lg:text-left">
+                        <span class="text-xs font-bold tracking-widest text-brand-500 uppercase">24/7 Dedicated Logistics Line</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold">Have an Urgent Delivery Right Now?</h3>
+                        <p class="text-slate-300 text-sm sm:text-base">Our controllers are standing by to dispatch a vehicle to your door within 60 minutes.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+                        <a href="tel:07462711312" class="w-full sm:w-auto text-center bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+                            <i class="fa-solid fa-phone mr-2"></i> Call (07462) 711312
+                        </a>
+                        <a href="mailto:office.todaycourier@gmail.com" class="w-full sm:w-auto text-center bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-4 rounded-xl border border-slate-600 text-sm">
+                            <i class="fa-solid fa-envelope mr-2"></i> office.todaycourier@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Contact Section -->
+        <section id="contact" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12">
+                    
+                    <!-- Contact Information Column -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">Get In Touch</h2>
+                            <h3 class="text-3xl font-extrabold text-slate-900">Direct Contact Details</h3>
+                            <p class="text-slate-600 mt-3 text-sm">Speak directly with our transport dispatchers or send us an email inquiry for bookings, long-term contracts, or queries.</p>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Phone Box -->
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-phone-volume"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Telephone / Dispatch</h4>
+                                    <a href="tel:07462711312" class="text-xl font-bold text-slate-900 hover:text-brand-600 transition-colors block mt-1">
+                                        (07462) 711312
+                                    </a>
+                                    <p class="text-xs text-slate-500 mt-1">Available 24 hours a day, 7 days a week</p>
+                                </div>
+                            </div>
+
+                            <!-- Email Box -->
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-envelope-open-text"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Email Address</h4>
+                                    <a href="mailto:office.todaycourier@gmail.com" class="text-base sm:text-lg font-bold text-slate-900 hover:text-brand-600 transition-colors block mt-1 truncate">
+                                        office.todaycourier@gmail.com
+                                    </a>
+                                    <p class="text-xs text-slate-500 mt-1">Fast responses for quote requests & booking confirmations</p>
+                                </div>
+                            </div>
+
+                            <!-- Operating Hours Box -->
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Operating Schedule</h4>
+                                    <p class="text-base font-bold text-slate-900 mt-1">24/7 Nationwide Operations</p>
+                                    <p class="text-xs text-slate-500 mt-1">Includes Bank Holidays & Weekends</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Contact Form -->
+                    <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Send Us a Direct Message</h3>
+                        <p class="text-sm text-slate-500 mb-8">Fill out the form below and our team will receive your message directly at office.todaycourier@gmail.com.</p>
+
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Full Name *</label>
+                                    <input type="text" required placeholder="John Smith" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Phone Number *</label>
+                                    <input type="tel" required placeholder="(07123) 456789" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Email Address *</label>
+                                    <input type="email" required placeholder="name@company.co.uk" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Service Type</label>
+                                    <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm bg-white">
+                                        <option>Same Day Courier</option>
+                                        <option>Pallet Delivery</option>
+                                        <option>Urgent Document</option>
+                                        <option>Scheduled Logistics</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Message & Booking Details *</label>
+                                <textarea rows="4" required placeholder="Provide pickup postcode, delivery postcode, vehicle requirement or general inquiry..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg transition-colors flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-paper-plane text-sm"></i>
+                                <span>Send Email Inquiry</span>
+                            </button>
+                        </form>
+
+                        <!-- Form Feedback Container -->
+                        <div id="contact-feedback" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-semibold text-center">
+                            Thank you! Your message has been prepared for <strong class="text-emerald-900">office.todaycourier@gmail.com</strong>.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <span class="text-xl font-black text-white">TODAY<span class="text-brand-500">COURIER</span></span>
+                    </div>
+                    <p class="text-sm text-slate-400 max-w-md">
+                        Today Courier Ltd is a premier UK same-day logistics provider delivering fast, reliable, and secure dedicated courier transport nationwide.
+                    </p>
+                    <div class="pt-2">
+                        <p class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Direct Contact</p>
+                        <p class="text-sm font-semibold text-white">Phone: <a href="tel:07462711312" class="hover:text-brand-500 transition-colors">(07462) 711312</a></p>
+                        <p class="text-sm font-semibold text-white">Email: <a href="mailto:office.todaycourier@gmail.com" class="hover:text-brand-500 transition-colors">office.todaycourier@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#services" class="hover:text-white transition-colors">Same Day Delivery</a></li>
+                        <li><a href="#quote" class="hover:text-white transition-colors">Instant Rate Estimator</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact Dispatch</a></li>
+                        <li><a href="tel:07462711312" class="hover:text-white transition-colors text-brand-500 font-semibold">Call (07462) 711312</a></li>
+                    </ul>
+                </div>
+
+                <!-- Operations -->
+                <div>
+                    <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Coverage</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>London & Home Counties</li>
+                        <li>Midlands & North West</li>
+                        <li>Scotland & Wales</li>
+                        <li>24/7 Dedicated Dispatch</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 Today Courier Ltd. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="tel:07462711312" class="hover:text-slate-300">(07462) 711312</a>
+                    <a href="mailto:office.todaycourier@gmail.com" class="hover:text-slate-300">office.todaycourier@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking / Quote Modal -->
+    <div id="quote-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeQuoteModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-1">Book Today Courier</h3>
+            <p class="text-xs text-slate-500 mb-6">Call directly or send booking details to office.todaycourier@gmail.com</p>
+
+            <div class="space-y-4">
+                <a href="tel:07462711312" class="flex items-center justify-between p-4 rounded-2xl bg-brand-50 border border-brand-200 text-brand-900 hover:bg-brand-100 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-brand-600 text-white rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-brand-700 uppercase">Immediate Hotline</span>
+                            <span class="text-lg font-extrabold text-slate-900">(07462) 711312</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-brand-600"></i>
+                </a>
+
+                <a href="mailto:office.todaycourier@gmail.com" class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 transition-colors">
+                    <div class="flex items-center space-x-3 overflow-hidden">
+                        <div class="w-10 h-10 bg-slate-800 text-white rounded-xl flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="block text-xs font-bold text-slate-500 uppercase">Email Dispatch</span>
+                            <span class="text-sm font-bold text-slate-900 block truncate">office.todaycourier@gmail.com</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-400 shrink-0"></i>
+                </a>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+                <button onclick="closeQuoteModal()" class="text-xs font-semibold text-slate-500 hover:text-slate-800">
+                    Close Window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle mobile navigation menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Open/Close Booking Modal
+        function openQuoteModal() {
+            document.getElementById('quote-modal').classList.remove('hidden');
+        }
+        function closeQuoteModal() {
+            document.getElementById('quote-modal').classList.add('hidden');
+        }
+
+        // Calculate Simple Estimated Rate
+        function handleHeroQuote(e) {
+            e.preventDefault();
+            const pickup = document.getElementById('calc-pickup').value;
+            const delivery = document.getElementById('calc-delivery').value;
+            const vehicle = document.getElementById('calc-vehicle').value;
+
+            // Simple rate lookup based on vehicle
+            let baseRate = 85;
+            if (vehicle === 'swb') baseRate = 120;
+            if (vehicle === 'lwb') baseRate = 160;
+            if (vehicle === 'luton') baseRate = 210;
+
+            const calculatedPrice = (baseRate + Math.floor(Math.random() * 35)).toFixed(2);
+            
+            document.getElementById('quote-price').innerText = '£' + calculatedPrice + ' + VAT';
+            document.getElementById('quote-result').classList.remove('hidden');
+        }
+
+        // Contact Form Submission
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const feedback = document.getElementById('contact-feedback');
+            feedback.classList.remove('hidden');
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+                e.target.reset();
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
